@@ -79,3 +79,20 @@ void _pall(stack_t **head, unsigned int line_number)
 		*head = (*head)->next;
 	}
 }
+
+/**
+ * _pint - print the head node
+ * @head: pointer to pointer to head
+ * @line_number: counter of line
+ * Return: nothing
+ */
+void _pint(stack_t **head, unsigned int line_number)
+{
+	(void)line_number;
+	if (!head)
+	{
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*head)->n);
+}

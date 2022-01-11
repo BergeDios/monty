@@ -44,5 +44,6 @@ void _push(stack_t **stack, unsigned int line_number);
 size_t print_stack_t(const stack_t *h);
 void *getfunc(char **lines);
 void _pall(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **head, unsigned int line_number);
 
 #endif
