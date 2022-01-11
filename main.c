@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 	{
 		printf("%s\n", lines[i]);
 	}
-	_push(lines[0]);
+	getfunc(lines);
+
 	return (0);
 }

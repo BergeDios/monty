@@ -1,31 +1,28 @@
 #include "monty.h"
 /**
  * _push - inserts node at begginning
- * @instructions: string to convert into n data
+ * @head: opinter to pointer of head
+ * @line_number: number of line of opcode
  * Return: 1 success -1 fail
  */
-int _push(char *instructions)
+void _push(stack_t **head, unsigned int line_number)
 {
 	stack_t *node, *temp;
 	int num;
-	char *token;
-	stack_t *head = NULL;
+	char *value;
 
-	token = NULL;
-
-
+	(void)line_number;
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		return (-1);
+		exit(EXIT_FAILURE);
 	}
-	token = strtok(instructions, " ");
-	token = strtok(NULL, " ");
-	num = atoi(token);
+	value = strtok(NULL, " ");
+	num = atoi(value);
 	node->n = num;
 	node->prev = NULL;
-	temp = head;
+	temp = *head;
 
 	if (temp != NULL)
 	{
@@ -36,9 +33,7 @@ int _push(char *instructions)
 	node->next = temp;
 	if (temp != NULL)
 		temp->prev = node;
-	head = node;
-	print_stack_t(head);
-	return (1);
+	*head = node;
 }
 /**
  * print_stack_t - print all the nodes of a doubly linked lists
@@ -63,4 +58,24 @@ size_t print_stack_t(const stack_t *h)
 	return (num);
 
 
+}
+/**
+ * _pall - prints all nodes
+ * @head: pointer to pointer to head
+ * @line_number: counter of line
+ * Return: nothing
+ */
+void _pall(stack_t **head, unsigned int line_number)
+{
+	(void)line_number;
+
+	while ((*head)->prev != NULL)
+	{
+		*head = (*head)->prev;
+	}
+	while (*head != NULL)
+	{
+		printf("%d\n", (*head)->n);
+		*head = (*head)->next;
+	}
 }
