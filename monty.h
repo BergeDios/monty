@@ -34,6 +34,9 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+char *_strdup(char *str);
+char **_strtok(char *str, char separator);
 extern stack_t *head;
 int _push(char *instruction);
 
