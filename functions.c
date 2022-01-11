@@ -68,15 +68,20 @@ size_t print_stack_t(const stack_t *h)
 void _pall(stack_t **head, unsigned int line_number)
 {
 	(void)line_number;
+	stack_t *aux;
 
-	while ((*head)->prev != NULL)
+	if (*head)
 	{
-		*head = (*head)->prev;
-	}
-	while (*head != NULL)
-	{
-		printf("%d\n", (*head)->n);
-		*head = (*head)->next;
+		aux = *head;
+		while (aux->prev != NULL)
+		{
+			aux = aux->prev;
+		}
+		while (aux != NULL)
+		{
+			printf("%d\n", aux->n);
+			aux = aux->next;
+		}
 	}
 }
 
@@ -88,11 +93,37 @@ void _pall(stack_t **head, unsigned int line_number)
  */
 void _pint(stack_t **head, unsigned int line_number)
 {
-	(void)line_number;
 	if (!head)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "L%d: can't show an empty stack", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*head)->n);
+}
+
+/**
+ * _pop - removes the top element of the stack
+ * @head: pointer to pointer to head
+ * @line_number: counter of line
+ * Return: nothing
+ */
+void _pop(stack_t **head, unsigned int line_number)
+{
+
+	if (!(*head))
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (!(*head)->next)
+	{
+		free(*head);
+		*head = NULL;
+	}
+	else
+	{
+		*head = (*head)->next;
+		free((*head)->prev);
+		(*head)->prev = NULL;
+	}
 }
