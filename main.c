@@ -27,6 +27,5 @@ int main(int argc, char **argv)
 	{
 		printf("%s\n", lines[i]);
 	}
-//	lines[strlen(lines)] = 0;
 	return (0);
 }
