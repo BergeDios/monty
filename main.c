@@ -1,14 +1,17 @@
 #include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
+/**
+ * main - interprets monty
+ * @argc: argument counter
+ * @argv: argument vector
+ * Return: 1 on success
+ */
 int main(int argc, char **argv)
 {
-	int op, re;
+	int op, re, i;
 	char **lines;
 	char buffer[1024];
 
+	(void)head;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -21,11 +24,12 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	re = read(op, buffer, 1024);
-	buffer[re -1] = 0;
+	buffer[re - 1] = 0;
 	lines = _strtok(buffer, 10);
-	for (int i = 0; lines[i]; i++)
+	for (i = 0; lines[i]; i++)
 	{
 		printf("%s\n", lines[i]);
 	}
+	_push(lines[0]);
 	return (0);
 }

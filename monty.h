@@ -41,5 +41,6 @@ char *_strdup(char *str);
 char **_strtok(char *str, char separator);
 extern stack_t *head;
 int _push(char *instruction);
+size_t print_stack_t(const stack_t *h);
 
 #endif
