@@ -36,6 +36,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+int freezer(char *str);
 char *_strdup(char *str);
 char **_strtok(char *str, char separator);
 extern stack_t *head;
