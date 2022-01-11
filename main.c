@@ -21,8 +21,12 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	re = read(op, buffer, 1024);
+	buffer[re -1] = 0;
 	lines = _strtok(buffer, 10);
 	for (int i = 0; lines[i]; i++)
+	{
 		printf("%s\n", lines[i]);
+	}
+//	lines[strlen(lines)] = 0;
 	return (0);
 }
