@@ -15,7 +15,7 @@ void _push(stack_t **head, unsigned int line_number)
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr ,"L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
 	value = strtok(NULL, " ");
@@ -95,7 +95,7 @@ void _pint(stack_t **head, unsigned int line_number)
 {
 	if (!head)
 	{
-		fprintf(stderr, "L%d: can't show an empty stack", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*head)->n);
