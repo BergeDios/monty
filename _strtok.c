@@ -12,9 +12,10 @@
  */
 char *_strdup(char *str)
 {
-	unsigned int a;
-	char *dup;
+	unsigned int a = 0;
+	char *dup = NULL;
 
+	a = 0;
 	if (!str)
 		return (NULL);
 	for (a = 0; str[a]; a++)
@@ -42,6 +43,7 @@ char **_strtok(char *str, char separator)
 	char *tokList[1024], **tokListReturn, auxTok[1024];
 	int exit = 0, i = 0, j = 0, k = 0, y = 0, tokLen = 0;
 
+	*tokList = NULL, tokListReturn = NULL;
 	for (i = 0; exit == 0; i++)
 	{
 		if (str[i] != separator)
@@ -83,7 +85,7 @@ char **_strtok(char *str, char separator)
 
 int freezer(char *str)
 {
-	int i;
+	int i = 0;
 
 	if (!str)
 		return (-1);

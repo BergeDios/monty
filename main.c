@@ -7,11 +7,12 @@
  */
 int main(int argc, char **argv)
 {
-	int op, re;
-	char **lines;
+	int op, re, i;
+	char *lines[1024];
 	char buffer[1024];
 
 	(void)head;
+	*lines = NULL;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -24,8 +25,12 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	re = read(op, buffer, 1024);
-	buffer[re - 1] = 0;
-	lines = _strtok(buffer, 10);
+	buffer[re - 1] = '\0';
+	printf("%s\n", buffer);
+	_getcommand(lines, buffer);
+	for (i = 0; lines[i]; i++)
+		printf("%s\n", lines[i]);
+
 	getfunc(lines);
 
 	return (0);
