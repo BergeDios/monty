@@ -46,4 +46,5 @@ void *getfunc(char **lines);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **head, unsigned int line_number);
 void _pop(stack_t **head, unsigned int line_number);
+void _swap(stack_t **head, unsigned int line_number);
 #endif
