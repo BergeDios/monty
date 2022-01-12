@@ -15,7 +15,7 @@ void _push(stack_t **head, unsigned int line_number)
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
-		fprintf(stderr ,"L%d: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
 	value = strtok(NULL, " ");
