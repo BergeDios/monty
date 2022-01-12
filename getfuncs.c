@@ -7,6 +7,8 @@
  */
 void *getfunc(char **lines)
 {
+	unsigned int pos = 0, i = 0, check;
+	char *command;
 	stack_t *head = NULL;
 	instruction_t instruct[] = {
 		{"push", _push},
@@ -23,7 +25,28 @@ void *getfunc(char **lines)
 		{"pstr", _pstr},
 		{NULL, NULL}
 	};
-	findfunc(lines, instruct);
+	for (pos = 0; lines[pos]; pos++)
+	{
+		check = checkcomm(lines[pos]);
+		if (check == 1 || lines[pos][0] == '\n')
+			continue;
+		i = 0;
+		command = strtok(lines[pos], " ");
+		while (instruct[i].opcode)
+		{
+			if ((strcmp(instruct[i].opcode, command) == 0))
+			{
+				instruct[i].f(&head, (pos + 1));
+				break;
+			}
+			i++;
+		}
+		if (instruct[i].opcode == NULL)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", (pos + 1), command);
+			exit(EXIT_FAILURE);
+		}
+	}
 	free_dlistint(head);
 	return (NULL);
 }
