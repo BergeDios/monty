@@ -17,6 +17,9 @@ void *getfunc(char **lines)
 		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
+		{"nop", _nop},
+		{"sub", _sub},
+		{"mul", _mul},
 		{NULL, NULL}
 	};
 
