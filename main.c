@@ -7,7 +7,7 @@
  */
 int main(int argc, char **argv)
 {
-	int op, re, i;
+	int op, re;
 	char *lines[1024];
 	char buffer[1024];
 
@@ -28,10 +28,8 @@ int main(int argc, char **argv)
 	buffer[re - 1] = '\0';
 	printf("%s\n", buffer);
 	_getcommand(lines, buffer);
-	for (i = 0; lines[i]; i++)
-		printf("%s\n", lines[i]);
-
 	getfunc(lines);
+	free_strlist(lines);
 
 	return (0);
 }
