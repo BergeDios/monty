@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 	buffer[re - 1] = '\0';
 	_getcommand(lines, buffer);
 	getfunc(lines);
-	free_strlist(lines);
+	if (lines[0])
+		free_strlist(lines);
 	return (0);
 }

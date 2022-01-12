@@ -57,5 +57,5 @@ void _pstr(stack_t **head, unsigned int line_number);
 int _getcommand(char *token_list[], char *line);
 int free_strlist(char *list[]);
 void free_dlistint(stack_t *head);
-
+unsigned int checkcomm(char *line);
 #endif

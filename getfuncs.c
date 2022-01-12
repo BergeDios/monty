@@ -7,7 +7,7 @@
  */
 void *getfunc(char **lines)
 {
-	unsigned int pos = 0, i;
+	unsigned int pos = 0, i, check;
 	char *command;
 	stack_t *head = NULL;
 	instruction_t instruct[] = {
@@ -28,6 +28,9 @@ void *getfunc(char **lines)
 
 	for (pos = 0; lines[pos]; pos++)
 	{
+		check = checkcomm(lines[pos]);
+		if (check == 1 || lines[pos][0] == '\n')
+			continue;
 		i = 0;
 		command = strtok(lines[pos], " ");
 		while (instruct[i].opcode)
