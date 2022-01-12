@@ -42,3 +42,24 @@ int free_strlist(char *list[])
 		free(list[pos]);
 	return (0);
 }
+/**
+ * free_dlistint - frees a dll
+ * @head: head of linked list pointer
+ * Return: void
+ */
+void free_dlistint(stack_t *head)
+{
+	stack_t *temp;
+
+	if (head)
+	{
+		while (head->prev != NULL)
+			head = head->prev;
+	}
+
+	while ((temp = head) != NULL)
+	{
+		head = head->next;
+		free(temp);
+	}
+}

@@ -34,6 +34,7 @@ void *getfunc(char **lines)
 			i++;
 		}
 	}
+	free_dlistint(head);
 	return (NULL);
 }
 /**

@@ -11,7 +11,6 @@ int main(int argc, char **argv)
 	char *lines[1024];
 	char buffer[1024];
 
-	(void)head;
 	*lines = NULL;
 	if (argc != 2)
 	{
@@ -30,6 +29,5 @@ int main(int argc, char **argv)
 	_getcommand(lines, buffer);
 	getfunc(lines);
 	free_strlist(lines);
-
 	return (0);
 }
