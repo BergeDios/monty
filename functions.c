@@ -11,7 +11,6 @@ void _push(stack_t **head, unsigned int line_number)
 	int num;
 	char *value;
 
-	line_number;
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
