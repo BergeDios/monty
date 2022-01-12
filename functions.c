@@ -67,9 +67,9 @@ size_t print_stack_t(const stack_t *h)
  */
 void _pall(stack_t **head, unsigned int line_number)
 {
-	(void)line_number;
 	stack_t *aux;
 
+	(void)line_number;
 	if (*head)
 	{
 		aux = *head;

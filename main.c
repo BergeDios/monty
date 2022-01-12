@@ -7,7 +7,7 @@
  */
 int main(int argc, char **argv)
 {
-	int op, re, i;
+	int op, re;
 	char **lines;
 	char buffer[1024];
 
@@ -26,10 +26,6 @@ int main(int argc, char **argv)
 	re = read(op, buffer, 1024);
 	buffer[re - 1] = 0;
 	lines = _strtok(buffer, 10);
-	for (i = 0; lines[i]; i++)
-	{
-		printf("%s\n", lines[i]);
-	}
 	getfunc(lines);
 
 	return (0);

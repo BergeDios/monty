@@ -10,7 +10,7 @@ void _swap(stack_t **head, unsigned int line_number)
 	stack_t *aux;
 	int auxA, auxB;
 
-	if (!(*head) && !(*head)->next)
+	if (!(*head) ||	!(*head)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -30,9 +30,8 @@ void _swap(stack_t **head, unsigned int line_number)
  */
 void _add(stack_t **head, unsigned int line_number)
 {
-	int val = 0;
 
-	if (!*head && !(*head)->next)
+	if (!*head || !(*head)->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -64,9 +63,8 @@ void _nop(stack_t **head, unsigned int line_number)
  */
 void _sub(stack_t **head, unsigned int line_number)
 {
-	int val = 0;
 
-	if (!*head && !(*head)->next)
+	if (!*head || !(*head)->next)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -86,9 +84,8 @@ void _sub(stack_t **head, unsigned int line_number)
  */
 void _mul(stack_t **head, unsigned int line_number)
 {
-	int val = 0;
 
-	if (!*head && !(*head)->next)
+	if (!*head || !(*head)->next)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
