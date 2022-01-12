@@ -11,14 +11,20 @@ void _push(stack_t **head, unsigned int line_number)
 	int num;
 	char *value;
 
-	(void)line_number;
+	line_number;
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
-		fprintf(stderr, "L%d: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: can't malloc", line_number);
 		exit(EXIT_FAILURE);
 	}
 	value = strtok(NULL, " ");
+	if (value == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer", line_number);
+		free(node);
+		exit(EXIT_FAILURE);
+	}
 	num = atoi(value);
 	node->n = num;
 	node->prev = NULL;
