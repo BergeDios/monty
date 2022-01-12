@@ -25,7 +25,6 @@ int main(int argc, char **argv)
 	}
 	re = read(op, buffer, 1024);
 	buffer[re - 1] = '\0';
-	printf("%s\n", buffer);
 	_getcommand(lines, buffer);
 	getfunc(lines);
 	free_strlist(lines);
