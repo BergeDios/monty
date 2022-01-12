@@ -20,6 +20,8 @@ void *getfunc(char **lines)
 		{"nop", _nop},
 		{"sub", _sub},
 		{"mul", _mul},
+		{"div", _div},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
 
@@ -30,7 +32,10 @@ void *getfunc(char **lines)
 		while (instruct[i].opcode)
 		{
 			if ((strcmp(instruct[i].opcode, command) == 0))
+			{
 				instruct[i].f(&head, (pos + 1));
+				break;
+			}
 			i++;
 		}
 		if (instruct[i].opcode == NULL)
