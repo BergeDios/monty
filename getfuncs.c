@@ -22,6 +22,7 @@ void *getfunc(char **lines)
 		{"mul", _mul},
 		{"div", _div},
 		{"mod", _mod},
+		{"pstr", _pstr},
 		{NULL, NULL}
 	};
 
