@@ -63,3 +63,27 @@ void free_dlistint(stack_t *head)
 		free(temp);
 	}
 }
+/**
+ * _mod - rest of the division of the second top element by the next
+ * @head: pointer to pointer to head
+ * @line_number: counter of line
+ * Return: nothing
+ */
+void _mod(stack_t **head, unsigned int line_number)
+{
+	if (!*head || !(*head)->next)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		if ((*head)->n == 0)
+		{
+			fprintf(stderr, "L%d>: division by zero", line_number);
+			exit(EXIT_FAILURE);
+		}
+		(*head)->next->n = (*head)->next->n / (*head)->n;
+		_pop(head, line_number);
+	}
+}
