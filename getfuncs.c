@@ -33,6 +33,11 @@ void *getfunc(char **lines)
 				instruct[i].f(&head, (pos + 1));
 			i++;
 		}
+		if (instruct[i].opcode == NULL)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", (pos + 1), command);
+			exit(EXIT_FAILURE);
+		}
 	}
 	free_dlistint(head);
 	return (NULL);
@@ -54,8 +59,8 @@ int _getcommand(char *token_list[], char *line)
 		token_list[pos_tok] = malloc(sizeof(char) * (strlen(token) + 1));
 		if (!token_list[pos_tok])
 		{
-			perror("no memory available for malloc token_list");
-			return (-1);
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
 		}
 
 		strcpy(token_list[pos_tok], token);
