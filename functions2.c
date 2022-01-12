@@ -87,3 +87,30 @@ void _mod(stack_t **head, unsigned int line_number)
 		_pop(head, line_number);
 	}
 }
+
+/**
+ * _pstr - print node contets until reach a 0 value
+ * @head: pointer to pointer to head
+ * @line_number: counter of line
+ * @Return: nothing
+ */
+void _pstr(stack_t **head, unsigned int line_number)
+{
+	stack_t *aux;
+
+	(void)line_number;
+	if (!*head)
+		putchar(10);
+	aux = *head;
+	if (aux && (aux->n <= 127 && aux->n > 0))
+	{
+		if (!aux->next)
+			putchar(aux->n);
+		while (aux->n <= 127 && aux->n > 0)
+		{
+			putchar(aux->n);
+			aux = aux->next;
+		}
+		putchar(10);
+	}
+}
