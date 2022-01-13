@@ -17,7 +17,7 @@ void _div(stack_t **head, unsigned int line_number)
 	{
 		if ((*head)->n == 0)
 		{
-			fprintf(stderr, "L%d>: division by zero\n", line_number);
+			fprintf(stderr, "L%d: division by zero\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 		(*head)->next->n = (*head)->next->n / (*head)->n;
@@ -80,7 +80,7 @@ void _mod(stack_t **head, unsigned int line_number)
 	{
 		if ((*head)->n == 0)
 		{
-			fprintf(stderr, "L%d>: division by zero\n", line_number);
+			fprintf(stderr, "L%d: division by zero\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 		(*head)->next->n = (*head)->next->n % (*head)->n;

@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	op = open(argv[1], O_RDONLY);
 	if (op < 0)
 	{
-		fprintf(stderr, "Error: Can't open file <file>\n");
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
 	}
 	start_global();
