@@ -19,3 +19,23 @@ unsigned int checkcomm(char *line)
 	}
 	return (0);
 }
+/**
+ * _pchar - prints char at top of stack
+ * @head: pointer to pointer to head
+ * @line_number: number of instruction line
+ * Return: no return
+ */
+void _pchar(stack_t **head, unsigned int line_number)
+{
+	if (head == NULL || *head == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*head)->n < 0 || (*head)->n >= 128)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (*head)->n);
+}

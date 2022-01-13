@@ -23,6 +23,7 @@ void *getfunc(char **lines)
 		{"div", _div},
 		{"mod", _mod},
 		{"pstr", _pstr},
+		{"pchar", _pchar},
 		{NULL, NULL}
 	};
 	for (pos = 0; lines[pos]; pos++)
