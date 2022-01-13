@@ -62,7 +62,7 @@ void *getfunc(char **lines)
  */
 int _getcommand(char *token_list[], char *line)
 {
-	char *token = NULL, *delim = "\n";
+	char *token = NULL, *delim = "\n\t\r";
 	int pos_tok = 0;
 
 	token = strtok(line, delim);
