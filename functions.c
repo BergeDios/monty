@@ -41,8 +41,7 @@ void add_dnodeint(stack_t **head, int num, unsigned int line_number)
 	}
 	new->n = num;
 	new->prev = NULL;
-	temp = *head;
-
+	temp = global.head;
 	if (temp != NULL)
 	{
 		while (temp->prev != NULL)
