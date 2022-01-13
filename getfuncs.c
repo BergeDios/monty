@@ -25,6 +25,7 @@ void *getfunc(char **lines)
 		{"pstr", _pstr},
 		{"pchar", _pchar},
 		{"rotl", _rotl},
+		{"rotr", _rotr},
 		{NULL, NULL}
 	};
 	for (pos = 0; lines[pos]; pos++)
