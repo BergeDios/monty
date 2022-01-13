@@ -99,24 +99,13 @@ void _pstr(stack_t **head, unsigned int line_number)
 	stack_t *aux;
 
 	(void)line_number;
-	if (!*head)
-		putchar(10);
+
 	aux = *head;
-	if (aux->n <= 127 && aux->n > 0)
+
+	while (aux && aux->n > 0 && aux->n < 128)
 	{
-		if (!aux->next)
-		{
-			if (aux->n <= 127 && aux->n > 0)
-				putchar(aux->n);
-		}
-		else
-		{
-			while (aux && (aux->n <= 127 && aux->n > 0))
-			{
-				putchar(aux->n);
-				aux = aux->next;
-			}
-		}
-		putchar(10);
+		putchar(aux->n);
+		aux = aux->next;
 	}
+	putchar(10);
 }
