@@ -39,14 +39,12 @@ typedef struct instruction_s
  * struct global - global structure for head and mode
  * @mode: is stack or queue
  * @head: pointer to pointer to head
- * @instruct: struct with opcodes and their functions
  * Description: mode for stack or queue mode and its head pointer
  */
 typedef struct global
 {
 	int mode;
 	stack_t *head;
-	char *command;
 }global_t;
 
 extern global_t global;
@@ -56,7 +54,7 @@ char *_strdup(char *str);
 char **_strtok(char *str, char separator);
 void _push(stack_t **stack, unsigned int line_number);
 size_t print_stack_t(const stack_t *h);
-void *getfunc(unsigned int line_num);
+void *getfunc(char **lines);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **head, unsigned int line_number);
 void _pop(stack_t **head, unsigned int line_number);
@@ -81,7 +79,4 @@ void add_dnodeint_end(stack_t **head, int num, unsigned int line_number);
 void _stack(stack_t **head, unsigned int line_number);
 void _queue(stack_t **head, unsigned int line_number);
 void start_global(void);
-ssize_t getline(char ** lineptr, size_t *n,
-                       FILE *stream);
-
 #endif

@@ -2,12 +2,13 @@
 
 /**
  * getfunc - selects correct function
- * @line_num: array of instructions
+ * @lines: array of instructions
  * Return: pointer to function
  */
-void *getfunc(unsigned int line_num)
+void *getfunc(char **lines)
 {
-	unsigned int i = 0;
+	unsigned int pos = 0, i = 0, check;
+	char *command;
 	instruction_t instruct[] = {
 		{"push", _push},
 		{"pall", _pall},
@@ -28,20 +29,29 @@ void *getfunc(unsigned int line_num)
 		{"stack", _stack},
 		{NULL, NULL}
 	};
-	while (instruct[i].opcode)
+	for (pos = 0; lines[pos]; pos++)
 	{
-		if ((strcmp(instruct[i].opcode, global.command) == 0))
+		check = checkcomm(lines[pos]);
+		if (check == 1 || lines[pos][0] == '\n')
+			continue;
+		i = 0;
+		command = strtok(lines[pos], " ");
+		while (instruct[i].opcode)
 		{
-			instruct[i].f(&global.head, line_num);
-			break;
+			if ((strcmp(instruct[i].opcode, command) == 0))
+			{
+				instruct[i].f(&global.head, (pos + 1));
+				break;
+			}
+			i++;
 		}
-		i++;
+		if (instruct[i].opcode == NULL)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", (pos + 1), command);
+			exit(EXIT_FAILURE);
+		}
 	}
-	if (instruct[i].opcode == NULL)
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, global.command);
-		exit(EXIT_FAILURE);
-	}
+	free_dlistint(global.head);
 	return (NULL);
 }
 /**
