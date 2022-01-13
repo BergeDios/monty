@@ -60,4 +60,5 @@ void free_dlistint(stack_t *head);
 unsigned int checkcomm(char *line);
 void findfunc(char *lines[], instruction_t instruct[]);
 void _pchar(stack_t **head, unsigned int line_number);
+void _rotl(stack_t **head, unsigned int line_number);
 #endif

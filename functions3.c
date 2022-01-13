@@ -39,3 +39,29 @@ void _pchar(stack_t **head, unsigned int line_number)
 	}
 	printf("%c\n", (*head)->n);
 }
+/**
+ * rotl - rotates the first element of stack to end
+ * @head: pointer to pointer to head
+ * @line_number: line number
+ * Return: void
+ */
+void _rotl(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp1 = NULL;
+	stack_t *temp2 = NULL;
+
+	(void)line_number;
+	if (*head == NULL || (*head)->next == NULL)
+		return;
+	temp1 = (*head)->next;
+	temp2 = *head;
+
+	for (; temp2->next != NULL; temp2 = temp2->next)
+		;
+
+	temp1->prev = NULL;
+	temp2->next = *head;
+	(*head)->next = NULL;
+	(*head)->prev = temp2;
+	*head = temp1;
+}
