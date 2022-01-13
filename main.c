@@ -1,4 +1,16 @@
 #include "monty.h"
+
+global_t global;
+/**
+ * start_global - start global variables
+ * Return: nothing
+ */
+void start_global(void)
+{
+	global.mode = 1;
+	global.head = NULL;
+}
+
 /**
  * main - interprets monty
  * @argc: argument counter
@@ -23,6 +35,7 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file <file>\n");
 		return (EXIT_FAILURE);
 	}
+	start_global();
 	re = read(op, buffer, 1024);
 	buffer[re - 1] = '\0';
 	_getcommand(lines, buffer);

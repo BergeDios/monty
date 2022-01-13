@@ -7,62 +7,51 @@
  */
 void _push(stack_t **head, unsigned int line_number)
 {
-	stack_t *node, *temp;
 	int num;
 	char *value;
 
-	node = malloc(sizeof(stack_t));
-	if (node == NULL)
+	value = strtok(NULL, " ");
+	if (value == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	num = atoi(value);
+	if (global.mode == 1)
+		add_dnodeint(head, num, line_number);
+	if (global.mode == 0)
+		add_dnodeint_end(head, num, line_number);
+}
+/**
+ * add_dnodeint - adds node at beggining of dll
+ * @head: pointer to pinter to head of dll
+ * @num: data for new node
+ * @line_number: line number for error
+ * Return: nothing
+ */
+void add_dnodeint(stack_t **head, int num, unsigned int line_number)
+{
+	stack_t *new, *temp;
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
 	{
 		fprintf(stderr, "L%d: usage: can't malloc\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	value = strtok(NULL, " ");
-	if (value == NULL)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free(node);
-		exit(EXIT_FAILURE);
-	}
-	num = atoi(value);
-	node->n = num;
-	node->prev = NULL;
+	new->n = num;
+	new->prev = NULL;
 	temp = *head;
 
 	if (temp != NULL)
 	{
-		/* making sure temp is at start*/
 		while (temp->prev != NULL)
 			temp = temp->prev;
 	}
-	node->next = temp;
+	new->next = temp;
 	if (temp != NULL)
-		temp->prev = node;
-	*head = node;
-}
-/**
- * print_stack_t - print all the nodes of a doubly linked lists
- * @h: pointer to head of linked list
- * Return: number of nodes
- */
-size_t print_stack_t(const stack_t *h)
-{
-	size_t num = 0;
-
-	if (!h)
-		return (num);
-	while (h->prev != NULL)/* makes sure you at the start*/
-		h = h->prev;
-
-	while (h != NULL)
-	{
-		printf("%d\n", h->n);
-		num++;
-		h = h->next;
-	}
-	return (num);
-
-
+		temp->prev = new;
+	*head = new;
 }
 /**
  * _pall - prints all nodes

@@ -89,3 +89,34 @@ void _rotr(stack_t **head, unsigned int line_number)
 	(*head)->prev = aux;
 	*head = aux;
 }
+/**
+ * add_dnodeint_end - adds node at end of dll
+ * @head: pointer to pointer to head
+ * @num: data for new node
+ * @line_number: line number for error
+ * Return: address of new node or NULL
+ */
+void add_dnodeint_end(stack_t **head, int num, unsigned int line_number)
+{
+	stack_t *new, *temp;
+
+	new = malloc(sizeof(stack_t));
+	if (!new)
+	{
+		fprintf(stderr, "L%u: usage: can't malloc\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	new->n = num;
+	new->next = NULL;
+	temp = *head;
+
+	if (temp != NULL)
+	{
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
+	}
+	else
+		*head = new;
+	new->prev = temp;
+}

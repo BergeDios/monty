@@ -9,7 +9,6 @@ void *getfunc(char **lines)
 {
 	unsigned int pos = 0, i = 0, check;
 	char *command;
-	stack_t *head = NULL;
 	instruction_t instruct[] = {
 		{"push", _push},
 		{"pall", _pall},
@@ -26,6 +25,8 @@ void *getfunc(char **lines)
 		{"pchar", _pchar},
 		{"rotl", _rotl},
 		{"rotr", _rotr},
+		{"queue", _queue},
+		{"stack", _stack},
 		{NULL, NULL}
 	};
 	for (pos = 0; lines[pos]; pos++)
@@ -39,7 +40,7 @@ void *getfunc(char **lines)
 		{
 			if ((strcmp(instruct[i].opcode, command) == 0))
 			{
-				instruct[i].f(&head, (pos + 1));
+				instruct[i].f(&global.head, (pos + 1));
 				break;
 			}
 			i++;
@@ -50,7 +51,7 @@ void *getfunc(char **lines)
 			exit(EXIT_FAILURE);
 		}
 	}
-	free_dlistint(head);
+	free_dlistint(global.head);
 	return (NULL);
 }
 /**
