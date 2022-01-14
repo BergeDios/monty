@@ -47,7 +47,7 @@ void *getfunc(char **lines)
 		}
 		if (instruct[i].opcode == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", (pos + 1), command);
+			fprintf(stderr, "L%u: unknown instruction %s\n", (pos + 1), command);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -112,7 +112,7 @@ void findfunc(char *lines[], instruction_t instruct[])
 		}
 		if (instruct[i].opcode == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", (pos + 1), command);
+			fprintf(stderr, "L%u: unknown instruction %s\n", (pos + 1), command);
 			exit(EXIT_FAILURE);
 		}
 	}

@@ -36,7 +36,7 @@ void add_dnodeint(stack_t **head, int num, unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		fprintf(stderr, "L%d: usage: can't malloc\n", line_number);
+		fprintf(stderr, "L%u: usage: can't malloc\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	new->n = num;
@@ -73,7 +73,7 @@ void _pall(stack_t **head, unsigned int line_number)
 		}
 		while (aux != NULL)
 		{
-			printf("%d\n", aux->n);
+			printf("%u\n", aux->n);
 			aux = aux->next;
 		}
 	}
@@ -89,10 +89,10 @@ void _pint(stack_t **head, unsigned int line_number)
 {
 	if (!head)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*head)->n);
+	printf("%u\n", (*head)->n);
 }
 
 /**
@@ -106,7 +106,7 @@ void _pop(stack_t **head, unsigned int line_number)
 
 	if (!(*head))
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if (!(*head)->next)
