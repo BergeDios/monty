@@ -8,6 +8,7 @@ push 2
 
                            
 push 4
-
+	asdasd
     push 5    
       push    6        
+      pall

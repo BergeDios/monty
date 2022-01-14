@@ -32,7 +32,6 @@ void *getfunc(unsigned int line_num)
 	{
 		if ((strcmp(instruct[i].opcode, global.command) == 0))
 		{
-			printf("encontre funcion %s\n", instruct[i].opcode);
 			instruct[i].f(&global.head, line_num);
 			break;
 		}
@@ -43,7 +42,6 @@ void *getfunc(unsigned int line_num)
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, global.command);
 		exit(EXIT_FAILURE);
 	}
-	free_dlistint(global.head);
 	return (NULL);
 }
 /**

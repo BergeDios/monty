@@ -17,12 +17,8 @@ void _push(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	num = atoi(value);
-	printf("%d\n", global.mode);
 	if (global.mode == 1)
-	{
 		add_dnodeint(head, num, line_number);
-		printf("ejecute push\n");
-	}
 	if (global.mode == 0)
 		add_dnodeint_end(head, num, line_number);
 }
@@ -45,8 +41,7 @@ void add_dnodeint(stack_t **head, int num, unsigned int line_number)
 	}
 	new->n = num;
 	new->prev = NULL;
-	temp = *head;
-
+	temp = global.head;
 	if (temp != NULL)
 	{
 		while (temp->prev != NULL)

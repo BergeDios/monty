@@ -34,21 +34,19 @@ int main(int argc, char **argv)
 	op = fopen(argv[1], "r");
 	if (op == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file <file>\n");
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
 	}
 	start_global();
-	printf("before getline\n");
 	while (getline(&buffer, &buffsize, op) != -1)
 	{
-		if (buffer[(strlen(buffer) - 1)] == '\n')
-			buffer[(strlen(buffer) - 1)] = '\0';
-		printf("buffer is: %s\n", buffer);
-		global.command = strtok(buffer, " ");
-		printf("*commands is:*%s*\n", global.command);
+		global.command = strtok(buffer, " \t\n\0");
 		if (!global.command)
+		{
+			line_number++;
 			continue;
-		if (global.command[0] == '#')
+		}
+		if (global.command[0] == '#' || global.command[0] == '\n')
 		{
 			free(buffer);
 			buffer = NULL;
@@ -59,5 +57,6 @@ int main(int argc, char **argv)
 		free(buffer);
 		buffer = NULL;
 	}
+	free_dlistint(global.head);
 	return (0);
 }
